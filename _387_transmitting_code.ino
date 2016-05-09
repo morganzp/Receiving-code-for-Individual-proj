@@ -20,9 +20,6 @@ void setup()
         // open serial communication for debugging and show 
         // the sketch filename and the date compiled
         Serial.begin(9600);
-        Serial.println(__FILE__);
-        Serial.println(__DATE__);
-        Serial.println(" ");
     }
  
     //  open software serial connection to the Bluetooth module.
