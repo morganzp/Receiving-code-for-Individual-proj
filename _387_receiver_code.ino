@@ -1,7 +1,7 @@
 #include <SoftwareSerial.h>
 #define E2  10 // Enable Pin for motor 1
-#define I3 8  // Control pin 1 for motor 1
-#define I4 9  // Control pin 2 for motor 2
+#define I3 8  // Control pin 1 for motor 
+#define I4 9  // Control pin 2 for motor 
 SoftwareSerial BTserial(2,3);//Rx, Tx
 int led=7;
 int led2=6;
@@ -23,7 +23,6 @@ void setup()
  
     if (DEBUG)
     {
-        // open serial communication for debugging and show the sketch name and the date compiled
         Serial.begin(9600);
     }
  
@@ -55,8 +54,8 @@ void processCommand()
         digitalWrite(I3, HIGH);//these are pins that will reverse the output motor;
         digitalWrite(I4, LOW);
         }
-      else if (strcmp ("STILL",receivedChars) == 0) { 
-        digitalWrite(6,LOW); 
+      else if (strcmp ("STILL",receivedChars) == 0) { //this says if both flex sensors are being activated or not being activated
+        digitalWrite(6,LOW);                          //then it tells the motor to do nothing  
         digitalWrite(7,LOW);    
         digitalWrite(I3, LOW);
         digitalWrite(I4, LOW);
@@ -69,7 +68,7 @@ void processCommand()
    
 }
  
-void recvWithStartEndMarkers() 
+void recvWithStartEndMarkers() //checks incoming signal to make sure it falls within data constrictions. 
 {
      static boolean recvInProgress = false;
      static byte ndx = 0;
